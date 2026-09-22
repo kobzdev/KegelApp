@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0D9488">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="description" content="A private, gentle, easy-to-use guided pelvic floor and Kegel wellness app for adults.">
+  <title>Floré — Pelvic Floor & Kegel Wellness</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans for clean modern typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-theme">
+  <!-- Desktop App Frame Container (Mobile-first responsive shell) -->
+  <div id="desktop-wrapper">
+    <!-- Optional Device Preview Switcher (Desktop only) -->
+    <header class="desktop-header">
+      <div class="brand-badge">
+        <span class="brand-icon">🌱</span>
+        <span class="brand-title">Floré Pelvic Wellness</span>
+      </div>
+      <div class="desktop-controls">
+        <button id="btn-device-toggle" class="btn-desktop-tool" title="Toggle Mobile Mockup Frame">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+          <span id="device-mode-label">Mobile Frame</span>
+        </button>
+        <button id="btn-quick-discreet" class="btn-desktop-tool btn-discreet-toggle" title="Discreet Screen Shield (Quick Privacy)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span>Privacy Shield</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Mobile Application Viewport -->
+    <main id="app-container" class="mobile-viewport">
+      <!-- Top Mobile App Bar -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <div class="app-logo">
+            <span class="logo-glyph">✨</span>
+            <span class="logo-name">Floré</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <!-- Active Streak Counter -->
+          <div class="streak-pill" id="topbar-streak" title="Current Daily Streak">
+            <span class="streak-fire">🔥</span>
+            <span class="streak-count" id="streak-counter-val">4</span>
+            <span class="streak-label">d</span>
+          </div>
+          <!-- Discreet Shield Button -->
+          <button id="btn-topbar-discreet" class="icon-btn" title="Quick Discreet Mode (Hide workout)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </button>
+          <!-- Quick Sound Toggle -->
+          <button id="btn-topbar-sound" class="icon-btn" title="Toggle Sound">
+            <svg id="sound-icon-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+            <svg id="sound-icon-off" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Scrollable Main Content Area for Screens -->
+      <div id="screen-viewport" class="screen-viewport">
+        
+        <!-- ========================================== -->
+        <!-- SCREEN 1: HOME DASHBOARD                   -->
+        <!-- ========================================== -->
+        <section id="view-home" class="app-screen active">
+          <!-- Welcome Banner & Daily Motivation -->
+          <div class="greeting-header">
+            <div class="greeting-text">
+              <span class="greeting-subtitle" id="greeting-time-tag">Good morning</span>
+              <h1 class="greeting-title">Welcome to Floré</h1>
+            </div>
+            <div class="privacy-badge-pill" title="100% Private, on-device data">
+              <span class="privacy-dot"></span>
+              <span>100% On-Device</span>
+            </div>
+          </div>
+
+          <!-- Hero: Today's Exercise Card -->
+          <div class="hero-card" id="hero-today-session">
+            <div class="hero-badge-row">
+              <span class="hero-chip" id="hero-program-chip">Beginner Kickstart • Day 4</span>
+              <span class="hero-time-chip">⏱️ ~3 mins</span>
+            </div>
+            <h2 class="hero-title" id="hero-session-title">Gentle Lift & Conscious Release</h2>
+            <p class="hero-desc" id="hero-session-desc">Focus on smooth 3-second gentle holds paired with full 5-second relaxation intervals. Keep your breath natural.</p>
+            
+            <div class="hero-stats-row">
+              <div class="hero-stat-item">
+                <span class="hero-stat-val">3s</span>
+                <span class="hero-stat-label">Hold</span>
+              </div>
+              <div class="hero-stat-divider"></div>
+              <div class="hero-stat-item">
+                <span class="hero-stat-val">5s</span>
+                <span class="hero-stat-label">Relax</span>
+              </div>
+              <div class="hero-stat-divider"></div>
+              <div class="hero-stat-item">
+                <span class="hero-stat-val">8</span>
+                <span class="hero-stat-label">Reps</span>
+              </div>
+            </div>
+
+            <div class="hero-actions-row">
+              <button id="btn-start-today-hero" class="btn-primary btn-hero-start">
+                <span class="btn-icon">▶</span>
+                <span>Start Today's Exercise</span>
+              </button>
+              <button id="btn-open-demo-hero" class="btn-secondary btn-hero-demo" title="Watch visual movement demonstration">
+                <span>👁️ Watch Demonstration</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Action Buttons Row -->
+          <div class="section-container">
+            <h3 class="section-title">Quick Sessions</h3>
+            <div class="quick-actions-grid">
+              <button id="btn-quick-3min" class="quick-action-card">
+                <div class="quick-card-icon quick-icon-amber">⚡</div>
+                <div class="quick-card-info">
+                  <span class="quick-card-title">Express 3-Min</span>
+                  <span class="quick-card-sub">Quick daily tune-up</span>
+                </div>
+              </button>
+              <button id="btn-quick-relax" class="quick-action-card">
+                <div class="quick-card-icon quick-icon-pink">🌸</div>
+                <div class="quick-card-info">
+                  <span class="quick-card-title">Deep Release</span>
+                  <span class="quick-card-sub">Down-training & breath</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Body Technique Demonstration Card (Home Dashboard) -->
+          <div class="section-container">
+            <div class="home-demo-card">
+              <div class="home-demo-header">
+                <div>
+                  <span class="explorer-badge">Interactive Movement Demo</span>
+                  <h3 class="home-demo-title">Body Technique & Breath Sync</h3>
+                </div>
+                <div class="home-demo-phase-pill" id="home-demo-phase-pill">🌿 Inhale & Relax</div>
+              </div>
+              <p class="home-demo-desc">Watch how the pelvic floor sling naturally drops on inhale and gently lifts inward & upward on exhale.</p>
+
+              <!-- Posture Switcher for Home Demo -->
+              <div class="home-demo-posture-bar">
+                <button class="btn-home-posture active" data-posture="supine">🛏️ Lying Down</button>
+                <button class="btn-home-posture" data-posture="seated">🪑 Seated</button>
+                <button class="btn-home-posture" data-posture="standing">🚶 Standing</button>
+              </div>
+
+              <!-- Animated SVG Stage on Home -->
+              <div class="home-demo-svg-box">
+                <svg id="home-live-demo-svg" viewBox="0 0 340 210" width="100%" height="200">
+                  <!-- Rendered dynamically via app.js -->
+                </svg>
+              </div>
+
+              <div class="home-demo-actions">
+                <button id="btn-home-open-full-studio" class="btn-secondary btn-full">
+                  🔍 Open Full Demonstration Studio & Guide
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weekly Consistency Tracker (M T W T F S S) -->
+          <div class="section-container">
+            <div class="section-header-row">
+              <h3 class="section-title">This Week's Rhythm</h3>
+              <span class="section-action" id="weekly-completion-summary">4 / 7 days</span>
+            </div>
+            <div class="weekly-tracker-card">
+              <div class="weekly-days-row" id="home-weekly-days-container">
+                <!-- Injected via JavaScript -->
+              </div>
+              <div class="weekly-footer-note">
+                <span class="spark-icon">✨</span>
+                <span id="home-streak-motivational-msg">Great job! 4 days completed this week. Consistency builds lifelong health.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Daily Gentle Wellness Tip -->
+          <div class="section-container">
+            <div class="wellness-tip-card">
+              <div class="tip-header">
+                <span class="tip-icon">💡</span>
+                <span class="tip-tag">Daily Mindful Tip</span>
+              </div>
+              <p class="tip-text" id="daily-wellness-tip-text">Remember to breathe naturally. If you catch yourself holding your breath or clenching your jaw, take a soft exhale and release your shoulders.</p>
+              <button class="btn-text-link" id="btn-tip-learn-more">Read proper technique guide →</button>
+            </div>
+          </div>
+
+          <!-- Quick Stats Summary -->
+          <div class="section-container mb-large">
+            <h3 class="section-title">Lifetime Overview</h3>
+            <div class="overview-stats-grid">
+              <div class="overview-stat-box">
+                <span class="overview-stat-number" id="home-stat-total-sessions">4</span>
+                <span class="overview-stat-label">Total Sessions</span>
+              </div>
+              <div class="overview-stat-box">
+                <span class="overview-stat-number" id="home-stat-total-mins">12</span>
+                <span class="overview-stat-label">Total Minutes</span>
+              </div>
+              <div class="overview-stat-box">
+                <span class="overview-stat-number" id="home-stat-current-streak">4</span>
+                <span class="overview-stat-label">Day Streak</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SCREEN 2: PROGRAMS & CUSTOM WORKOUTS       -->
+        <!-- ========================================== -->
+        <section id="view-programs" class="app-screen">
+          <div class="screen-header">
+            <h1 class="screen-title">Exercise Programs</h1>
+            <p class="screen-subtitle">Progressive routines tailored for gentle strength, coordination, and relaxation.</p>
+          </div>
+
+          <!-- Active Program Progress Header Card -->
+          <div class="active-program-card" id="active-program-banner">
+            <div class="active-prog-top">
+              <div class="prog-info">
+                <span class="prog-badge">Active Program</span>
+                <h3 class="prog-name" id="active-prog-title">Beginner Kickstart</h3>
+              </div>
+              <span class="prog-icon-large" id="active-prog-icon">🌱</span>
+            </div>
+            <p class="prog-summary" id="active-prog-desc">Learn muscle awareness, gentle coordination, and complete release.</p>
+            <div class="prog-progress-bar-container">
+              <div class="prog-progress-bar-fill" id="active-prog-progress-fill" style="width: 57%;"></div>
+            </div>
+            <div class="prog-progress-meta">
+              <span id="active-prog-step-label">Day 4 of 7</span>
+              <span id="active-prog-pct">57% Complete</span>
+            </div>
+            <button id="btn-continue-active-prog" class="btn-primary mt-medium">
+              Continue Day 4 Session
+            </button>
+          </div>
+
+          <!-- All Preset Programs Grid -->
+          <div class="section-container">
+            <h3 class="section-title">All Guided Programs</h3>
+            <div class="programs-list" id="preset-programs-list">
+              <!-- Dynamically populated from programs.js -->
+            </div>
+          </div>
+
+          <!-- Custom Routine Builder Section -->
+          <div class="section-container mb-large">
+            <div class="custom-builder-banner">
+              <div class="custom-banner-left">
+                <h3>Custom Exercise Session</h3>
+                <p>Customize your own hold time, relaxation intervals, and reps.</p>
+              </div>
+              <button id="btn-open-custom-builder" class="btn-secondary">
+                <span>+ Custom Session</span>
+              </button>
+            </div>
+            <div id="custom-routines-container" class="custom-routines-list">
+              <!-- Dynamically injected custom routines -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SCREEN 3: PROGRESS & ANALYTICS             -->
+        <!-- ========================================== -->
+        <section id="view-progress" class="app-screen">
+          <div class="screen-header">
+            <h1 class="screen-title">Your Progress</h1>
+            <p class="screen-subtitle">Track your consistency, milestones, and daily rhythm.</p>
+          </div>
+
+          <!-- KPI Summary Cards -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-icon-wrap kpi-teal">🔥</div>
+              <div class="kpi-info">
+                <span class="kpi-val" id="progress-stat-streak">4</span>
+                <span class="kpi-label">Current Streak</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon-wrap kpi-blue">🏆</div>
+              <div class="kpi-info">
+                <span class="kpi-val" id="progress-stat-longest">4</span>
+                <span class="kpi-label">Longest Streak</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon-wrap kpi-green">⏱️</div>
+              <div class="kpi-info">
+                <span class="kpi-val" id="progress-stat-minutes">12</span>
+                <span class="kpi-label">Total Minutes</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon-wrap kpi-purple">🎯</div>
+              <div class="kpi-info">
+                <span class="kpi-val" id="progress-stat-sessions">4</span>
+                <span class="kpi-label">Sessions Done</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weekly Minutes Chart (Interactive SVG Bar Chart) -->
+          <div class="section-container">
+            <div class="section-header-row">
+              <h3 class="section-title">Weekly Exercise Time</h3>
+              <span class="section-meta">Minutes per day</span>
+            </div>
+            <div class="chart-card">
+              <div class="svg-chart-container" id="weekly-bar-chart-container">
+                <!-- Injected via app.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Monthly Activity Calendar Heatmap -->
+          <div class="section-container">
+            <div class="section-header-row">
+              <h3 class="section-title">Monthly Consistency</h3>
+              <span class="section-meta" id="progress-current-month-label">September 2026</span>
+            </div>
+            <div class="calendar-card">
+              <div class="calendar-grid-header">
+                <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+              </div>
+              <div class="calendar-grid-days" id="calendar-days-container">
+                <!-- Injected via app.js -->
+              </div>
+              <div class="calendar-legend">
+                <span class="legend-item"><span class="dot dot-completed"></span> Completed</span>
+                <span class="legend-item"><span class="dot dot-today"></span> Today</span>
+                <span class="legend-item"><span class="dot dot-rest"></span> Rest day</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Milestone Badges & Achievements Grid -->
+          <div class="section-container">
+            <div class="section-header-row">
+              <h3 class="section-title">Milestones & Badges</h3>
+              <span class="section-meta" id="badges-unlocked-count">2 / 8 Unlocked</span>
+            </div>
+            <div class="badges-grid" id="badges-container">
+              <!-- Injected via app.js -->
+            </div>
+          </div>
+
+          <!-- Session Activity History Log -->
+          <div class="section-container mb-large">
+            <div class="section-header-row">
+              <h3 class="section-title">Session History</h3>
+              <span class="section-meta" id="history-total-count">4 entries</span>
+            </div>
+            <div class="history-list" id="history-log-container">
+              <!-- Injected via app.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SCREEN 4: LEARN & EDUCATION LIBRARY        -->
+        <!-- ========================================== -->
+        <section id="view-learn" class="app-screen">
+          <div class="screen-header">
+            <h1 class="screen-title">Pelvic Floor Education</h1>
+            <p class="screen-subtitle">Evidence-based, clear guides on technique, anatomy, and healthy habit building.</p>
+          </div>
+
+          <!-- Visual Demonstrations Studio Highlight Card -->
+          <div class="section-container">
+            <div class="demo-highlight-card">
+              <div class="demo-highlight-left">
+                <span class="explorer-badge">Visual Movement & Posture Guide</span>
+                <h3>Exercise Demonstrations</h3>
+                <p>Watch step-by-step animated demonstrations of proper posture (Lying down, Seated, Standing) and pelvic floor lift vs full relaxation.</p>
+                <button id="btn-open-studio-learn" class="btn-primary mt-small">
+                  <span>▶ Watch Demonstrations</span>
+                </button>
+              </div>
+              <div class="demo-highlight-preview">
+                <span class="preview-avatar-icon">🧘</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Pelvic Sling Explorer -->
+          <div class="section-container">
+            <div class="anatomy-explorer-card">
+              <div class="explorer-header">
+                <div>
+                  <span class="explorer-badge">Interactive Visualizer</span>
+                  <h3 class="explorer-title">The Pelvic Sling Movement</h3>
+                </div>
+                <div class="explorer-state-badge" id="anatomy-state-label">State: Resting Baseline</div>
+              </div>
+              <p class="explorer-desc">The pelvic floor acts like a supportive hammock. Notice how it gently lifts upward during contraction and drops completely during relaxation.</p>
+              
+              <!-- Dynamic SVG Sling Animation -->
+              <div class="anatomy-svg-box">
+                <svg id="anatomy-svg" viewBox="0 0 320 180" width="100%" height="180">
+                  <!-- Bony pelvis landmarks -->
+                  <path d="M 40 50 Q 80 30 110 50 Q 140 70 160 50 Q 180 70 210 50 Q 240 30 280 50" fill="none" stroke="var(--border-color)" stroke-width="4" stroke-linecap="round"/>
+                  <text x="40" y="38" class="svg-label">Pubic Bone</text>
+                  <text x="240" y="38" class="svg-label">Tailbone</text>
+
+                  <!-- Organ visual metaphor (Bladder) -->
+                  <ellipse id="anatomy-bladder" cx="160" cy="80" rx="36" ry="26" fill="var(--color-primary-light)" stroke="var(--color-primary)" stroke-width="2" opacity="0.85" />
+                  <text x="160" y="85" text-anchor="middle" class="svg-organ-label">Support Area</text>
+
+                  <!-- Dynamic Pelvic Floor Hammock Muscle Sling -->
+                  <path id="anatomy-sling-path" d="M 60 90 Q 160 145 260 90" fill="none" stroke="var(--color-primary)" stroke-width="8" stroke-linecap="round"/>
+                  
+                  <!-- Gentle Directional Arrow -->
+                  <g id="anatomy-arrows" transform="translate(160, 130)">
+                    <line x1="0" y1="10" x2="0" y2="-10" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round"/>
+                    <polyline points="-5,-4 0,-11 5,-4" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round"/>
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Interactive Controls for Visualizer -->
+              <div class="anatomy-controls-row">
+                <button id="btn-sling-relax" class="btn-anatomy-mode active">🌿 Relaxed (Baseline)</button>
+                <button id="btn-sling-contract" class="btn-anatomy-mode">🌊 Contract (Lift Up)</button>
+                <button id="btn-sling-cycle" class="btn-anatomy-mode">🔄 Auto Cycle</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Technique Self-Check Quiz Accordion -->
+          <div class="section-container">
+            <div class="quiz-card">
+              <div class="quiz-card-header">
+                <span class="quiz-icon">✨</span>
+                <div>
+                  <h3 class="quiz-title">Technique Self-Check</h3>
+                  <p class="quiz-desc">Test your understanding with 4 quick wellness questions.</p>
+                </div>
+              </div>
+              <button id="btn-open-quiz" class="btn-secondary mt-small">Start Self-Check Quiz</button>
+            </div>
+          </div>
+
+          <!-- Educational Articles List -->
+          <div class="section-container mb-large">
+            <h3 class="section-title">Guides & Educational Articles</h3>
+            <div class="articles-grid" id="education-articles-list">
+              <!-- Injected dynamically from education.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SCREEN 5: SETTINGS & PRIVACY               -->
+        <!-- ========================================== -->
+        <section id="view-settings" class="app-screen">
+          <div class="screen-header">
+            <h1 class="screen-title">Settings & Privacy</h1>
+            <p class="screen-subtitle">Manage audio, gentle reminders, appearance, and your private data.</p>
+          </div>
+
+          <!-- Privacy Assurance Card -->
+          <div class="privacy-callout-card">
+            <div class="privacy-callout-icon">🛡️</div>
+            <div>
+              <h4 class="privacy-callout-title">100% On-Device & Private</h4>
+              <p class="privacy-callout-desc">Your routine and exercise history are stored strictly on this device. No tracking, no personal information collected, no external server logs.</p>
+            </div>
+          </div>
+
+          <!-- Preferences: Reminders -->
+          <div class="settings-group">
+            <h3 class="settings-group-title">Daily Gentle Reminders</h3>
+            
+            <div class="settings-item">
+              <div class="settings-item-label">
+                <strong>Enable Daily Reminders</strong>
+                <p>Receive a discreet notification: "Your wellness session is ready."</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="setting-reminders-toggle" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div id="reminders-list-container" class="reminders-sublist">
+              <!-- Injected via app.js -->
+            </div>
+
+            <div class="settings-btn-row">
+              <button id="btn-add-reminder" class="btn-outline-small">+ Add Reminder Time</button>
+              <button id="btn-test-notification" class="btn-text-small">Send Test Notification</button>
+            </div>
+          </div>
+
+          <!-- Preferences: Audio & Vibration -->
+          <div class="settings-group">
+            <h3 class="settings-group-title">Sound & Haptic Feedback</h3>
+            
+            <div class="settings-item">
+              <div class="settings-item-label">
+                <strong>Session Sound & Chimes</strong>
+                <p>Gentle acoustic tones marking each phase</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="setting-sound-toggle" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="settings-item">
+              <div class="settings-item-label">
+                <strong>Voice Cues (Spoken Guidance)</strong>
+                <p>Soft voice stating "Contract", "Relax", "Hold"</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="setting-voice-toggle">
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="settings-item">
+              <div class="settings-item-label">
+                <strong>Vibration (Haptics)</strong>
+                <p>Gentle tactile pulses for discreet feedback</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="setting-haptic-toggle" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="settings-item">
+              <div class="settings-item-label">
+                <strong>Chime Style</strong>
+              </div>
+              <select id="setting-sound-theme" class="settings-select">
+                <option value="crystal">Crystal Chime</option>
+                <option value="bell">Meditation Bell</option>
+                <option value="woodblock">Gentle Woodblock</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Preferences: Appearance & Privacy Shield -->
+          <div class="settings-group">
+            <h3 class="settings-group-title">Display & Privacy Shield</h3>
+            
+            <div class="settings-item">
+              <div class="settings-item-label">
+                <strong>Theme</strong>
+                <p>Choose between Light and Dark mode</p>
+              </div>
+              <select id="setting-theme-select" class="settings-select">
+                <option value="light">Light Theme</option>
+                <option value="dark">Dark Theme</option>
+                <option value="auto">System Default</option>
+              </select>
+            </div>
+
+            <div class="settings-item">
+              <div class="settings-item-label">
+                <strong>Discreet Privacy Mode</strong>
+                <p>Quick shield disguising the app as a plain study journal</p>
+              </div>
+              <button id="btn-trigger-discreet-settings" class="btn-outline-small">Activate Shield</button>
+            </div>
+          </div>
+
+          <!-- Preferences: Profile & Goal Setting -->
+          <div class="settings-group">
+            <h3 class="settings-group-title">Wellness Goal</h3>
+            <div class="settings-item">
+              <div class="settings-item-label">
+                <strong>Primary Focus</strong>
+              </div>
+              <select id="setting-goal-select" class="settings-select">
+                <option value="awareness">Improve Pelvic Floor Awareness</option>
+                <option value="habit">Build a Regular Exercise Habit</option>
+                <option value="bladder">Support Bladder & Core Control</option>
+                <option value="general">General Pelvic Floor Wellness</option>
+                <option value="postpartum">Gentle Postpartum Recovery</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Data Management & Export/Import -->
+          <div class="settings-group">
+            <h3 class="settings-group-title">Data Management</h3>
+            <div class="settings-btn-row">
+              <button id="btn-export-data" class="btn-secondary btn-full">
+                📥 Export Backup (JSON)
+              </button>
+              <button id="btn-import-data-trigger" class="btn-secondary btn-full">
+                📤 Import Backup
+              </button>
+              <input type="file" id="file-import-input" accept=".json" style="display:none;">
+            </div>
+            <button id="btn-reset-data" class="btn-danger-outline btn-full mt-medium">
+              🗑️ Clear All Data & Reset App
+            </button>
+          </div>
+
+          <!-- Health & Medical Disclaimer Note -->
+          <div class="disclaimer-footer-card mb-large">
+            <h4>🌿 Wellness & Safety Notice</h4>
+            <p>Floré is designed solely for general wellness and healthy habit education. It does not provide medical diagnosis, treatment, or guaranteed clinical outcomes. If you experience persistent pelvic pain, urinary symptoms, or other discomfort, please consult a qualified healthcare professional or Pelvic Floor Physical Therapist.</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- BOTTOM NAVIGATION BAR                      -->
+      <!-- ========================================== -->
+      <nav class="app-bottom-nav">
+        <button class="nav-tab active" data-target="view-home">
+          <div class="nav-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          </div>
+          <span class="nav-label">Home</span>
+        </button>
+
+        <button class="nav-tab" data-target="view-programs">
+          <div class="nav-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </div>
+          <span class="nav-label">Programs</span>
+        </button>
+
+        <!-- Center Floating Exercise Action Button -->
+        <button class="nav-tab-center" id="btn-nav-exercise-center" title="Start Guided Exercise">
+          <div class="nav-fab-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          </div>
+          <span class="nav-fab-label">Exercise</span>
+        </button>
+
+        <button class="nav-tab" data-target="view-progress">
+          <div class="nav-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg>
+          </div>
+          <span class="nav-label">Progress</span>
+        </button>
+
+        <button class="nav-tab" data-target="view-learn">
+          <div class="nav-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          </div>
+          <span class="nav-label">Learn</span>
+        </button>
+
+        <button class="nav-tab" data-target="view-settings">
+          <div class="nav-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          </div>
+          <span class="nav-label">Settings</span>
+        </button>
+      </nav>
+    </main>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- MODAL: GUIDED EXERCISE PLAYER (HERO FEATURE)            -->
+  <!-- ======================================================= -->
+  <div id="exercise-player-modal" class="modal-overlay hidden">
+    <div class="player-container">
+      <!-- Player Header -->
+      <header class="player-header">
+        <button id="btn-player-exit" class="player-icon-btn" title="Exit Exercise">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <div class="player-session-info">
+          <h2 class="player-session-title" id="player-title">Today's Session</h2>
+          <span class="player-rep-counter" id="player-rep-info">Rep 1 of 8 • Set 1 of 1</span>
+        </div>
+        <button id="btn-player-sound" class="player-icon-btn" title="Toggle Sound">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        </button>
+      </header>
+
+      <!-- Overall Linear Progress Bar -->
+      <div class="player-overall-progress">
+        <div class="player-overall-bar" id="player-overall-bar" style="width: 0%;"></div>
+      </div>
+
+      <!-- View Mode Selector & Posture Switcher in Player -->
+      <div class="player-mode-bar">
+        <div class="player-view-tabs">
+          <button class="btn-player-view-tab active" data-view="orb">⚪ Focus Ring</button>
+          <button class="btn-player-view-tab" data-view="posture">🧘 Body Demo</button>
+          <button class="btn-player-view-tab" data-view="elevator">🎚️ Elevator</button>
+        </div>
+        <div class="player-posture-selector" id="player-posture-selector">
+          <button class="btn-posture-choice active" data-posture="supine" title="Lying down posture demonstration">🛏️ Lying</button>
+          <button class="btn-posture-choice" data-posture="seated" title="Seated chair posture demonstration">🪑 Seated</button>
+          <button class="btn-posture-choice" data-posture="standing" title="Standing posture demonstration">🚶 Standing</button>
+        </div>
+      </div>
+
+      <!-- Main Visual Timing Stage -->
+      <div class="player-stage">
+        
+        <!-- 1. VIEW MODE A: SVG Circular Countdown Ring & Animated Central Orb -->
+        <div class="timer-ring-wrapper" id="player-view-orb">
+          <svg class="timer-svg" viewBox="0 0 280 280">
+            <!-- Background track ring -->
+            <circle class="timer-track" cx="140" cy="140" r="118"></circle>
+            <!-- Animated progress ring with gradient -->
+            <circle id="timer-progress-ring" class="timer-progress" cx="140" cy="140" r="118"></circle>
+          </svg>
+
+          <!-- Central Pulsing Breathing Orb & Large Countdown Display -->
+          <div class="timer-center-content">
+            <!-- Inner breathing / pulsing orb -->
+            <div class="breathing-orb" id="breathing-orb">
+              <div class="orb-core"></div>
+              <div class="orb-ring ring-1"></div>
+              <div class="orb-ring ring-2"></div>
+            </div>
+
+            <div class="timer-labels">
+              <div class="timer-phase-badge" id="player-phase-badge">GET READY</div>
+              <div class="timer-countdown" id="player-seconds">03</div>
+              <div class="timer-unit">seconds</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. VIEW MODE B: Live Anatomical Body & Posture Movement Demonstration -->
+        <div class="player-posture-demo-box hidden" id="player-view-posture">
+          <div class="demo-hud-header">
+            <span class="demo-hud-phase" id="demo-hud-phase">CONTRACT</span>
+            <span class="demo-hud-timer" id="demo-hud-timer">03s</span>
+          </div>
+
+          <!-- Dynamic Posture Demonstration SVG -->
+          <div class="posture-svg-container">
+            <svg id="live-posture-svg" viewBox="0 0 340 240" width="100%" height="210">
+              <defs>
+                <linearGradient id="muscleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="var(--color-primary)" />
+                  <stop offset="100%" stop-color="#2DD4BF" />
+                </linearGradient>
+                <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+
+              <!-- Body Background Mat / Floor for Supine -->
+              <rect id="posture-mat" x="20" y="215" width="300" height="6" rx="3" fill="var(--border-color)" />
+
+              <!-- Lying Down (Supine) Posture Vector Elements -->
+              <g id="demo-posture-supine" class="posture-figure-group">
+                <!-- Head & Pillow -->
+                <ellipse cx="65" cy="180" rx="16" ry="12" fill="#CBD5E1" opacity="0.6"/>
+                <circle cx="65" cy="170" r="14" fill="var(--text-secondary)" />
+                <!-- Torso Outline -->
+                <path d="M 78 178 Q 110 178 160 182 Q 185 184 205 190" fill="none" stroke="var(--text-secondary)" stroke-width="12" stroke-linecap="round"/>
+                <!-- Bent Legs (Knees Up, Feet Flat on floor) -->
+                <path d="M 205 190 L 245 130 L 275 215" fill="none" stroke="var(--text-secondary)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Arms resting by side -->
+                <path d="M 95 186 L 160 195" fill="none" stroke="var(--text-muted)" stroke-width="6" stroke-linecap="round"/>
+
+                <!-- Anatomical Lungs (Expanding/Contracting with breath) -->
+                <g id="demo-supine-lungs" transform="translate(115, 160)">
+                  <ellipse cx="-6" cy="0" rx="10" ry="12" fill="rgba(56, 189, 248, 0.35)" stroke="#38BDF8" stroke-width="1.5"/>
+                  <ellipse cx="6" cy="0" rx="10" ry="12" fill="rgba(56, 189, 248, 0.35)" stroke="#38BDF8" stroke-width="1.5"/>
+                  <text x="0" y="24" text-anchor="middle" class="demo-svg-label">Lungs</text>
+                </g>
+
+                <!-- Diaphragm Piston Curve -->
+                <path id="demo-supine-diaphragm" d="M 100 175 Q 115 170 130 175" fill="none" stroke="#F59E0B" stroke-width="3" stroke-linecap="round"/>
+
+                <!-- Pelvic Floor Muscle Sling (Dynamic Upward Lift) -->
+                <g id="demo-supine-pelvis" transform="translate(195, 182)">
+                  <path id="demo-supine-sling" d="M -22 10 Q 0 20 22 10" fill="none" stroke="var(--color-primary)" stroke-width="6" stroke-linecap="round" filter="url(#glowEffect)"/>
+                  <!-- Dynamic upward contraction arrow -->
+                  <g id="demo-supine-lift-arrow" transform="translate(0, 5)">
+                    <line x1="0" y1="12" x2="0" y2="-6" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round"/>
+                    <polyline points="-4,-2 0,-8 4,-2" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round"/>
+                  </g>
+                  <text x="0" y="-12" text-anchor="middle" class="demo-svg-tag">Pelvic Floor</text>
+                </g>
+              </g>
+
+              <!-- Seated Posture Vector Elements (Switched dynamically) -->
+              <g id="demo-posture-seated" class="posture-figure-group hidden">
+                <!-- Chair -->
+                <path d="M 140 130 L 140 220 M 140 180 L 205 180 L 205 220" fill="none" stroke="var(--border-color)" stroke-width="6" stroke-linecap="round"/>
+                <!-- Head -->
+                <circle cx="170" cy="55" r="16" fill="var(--text-secondary)" />
+                <!-- Upright Spine & Torso -->
+                <path d="M 170 72 L 170 175" fill="none" stroke="var(--text-secondary)" stroke-width="14" stroke-linecap="round"/>
+                <!-- Thighs & Lower legs seated -->
+                <path d="M 170 175 L 220 175 L 220 220" fill="none" stroke="var(--text-secondary)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Arms resting on lap -->
+                <path d="M 170 100 L 195 140 L 180 170" fill="none" stroke="var(--text-muted)" stroke-width="6" stroke-linecap="round"/>
+
+                <!-- Seated Lungs & Diaphragm -->
+                <g id="demo-seated-lungs" transform="translate(170, 105)">
+                  <ellipse cx="-7" cy="0" rx="9" ry="14" fill="rgba(56, 189, 248, 0.35)" stroke="#38BDF8" stroke-width="1.5"/>
+                  <ellipse cx="7" cy="0" rx="9" ry="14" fill="rgba(56, 189, 248, 0.35)" stroke="#38BDF8" stroke-width="1.5"/>
+                </g>
+                <path id="demo-seated-diaphragm" d="M 155 125 Q 170 118 185 125" fill="none" stroke="#F59E0B" stroke-width="3" stroke-linecap="round"/>
+
+                <!-- Seated Pelvic Sling -->
+                <g id="demo-seated-pelvis" transform="translate(170, 172)">
+                  <path id="demo-seated-sling" d="M -18 8 Q 0 16 18 8" fill="none" stroke="var(--color-primary)" stroke-width="6" stroke-linecap="round" filter="url(#glowEffect)"/>
+                  <g id="demo-seated-lift-arrow">
+                    <line x1="0" y1="10" x2="0" y2="-6" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round"/>
+                    <polyline points="-4,-2 0,-8 4,-2" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round"/>
+                  </g>
+                  <text x="32" y="5" class="demo-svg-tag">Pelvic Lift</text>
+                </g>
+              </g>
+
+              <!-- Standing Posture Vector Elements -->
+              <g id="demo-posture-standing" class="posture-figure-group hidden">
+                <circle cx="170" cy="40" r="15" fill="var(--text-secondary)" />
+                <path d="M 170 56 L 170 145" fill="none" stroke="var(--text-secondary)" stroke-width="14" stroke-linecap="round"/>
+                <path d="M 170 145 L 160 220 M 170 145 L 180 220" fill="none" stroke="var(--text-secondary)" stroke-width="12" stroke-linecap="round"/>
+                <g id="demo-standing-lungs" transform="translate(170, 85)">
+                  <ellipse cx="-7" cy="0" rx="9" ry="13" fill="rgba(56, 189, 248, 0.35)" stroke="#38BDF8" stroke-width="1.5"/>
+                  <ellipse cx="7" cy="0" rx="9" ry="13" fill="rgba(56, 189, 248, 0.35)" stroke="#38BDF8" stroke-width="1.5"/>
+                </g>
+                <g id="demo-standing-pelvis" transform="translate(170, 142)">
+                  <path id="demo-standing-sling" d="M -16 6 Q 0 14 16 6" fill="none" stroke="var(--color-primary)" stroke-width="6" stroke-linecap="round" filter="url(#glowEffect)"/>
+                  <g id="demo-standing-lift-arrow">
+                    <line x1="0" y1="8" x2="0" y2="-6" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round"/>
+                    <polyline points="-4,-2 0,-8 4,-2" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round"/>
+                  </g>
+                </g>
+              </g>
+
+              <!-- Dynamic Posture Callout Indicators -->
+              <g class="demo-callouts">
+                <rect x="22" y="16" width="135" height="26" rx="6" fill="var(--bg-surface)" stroke="var(--border-color)" />
+                <text x="30" y="33" class="demo-hud-callout" id="hud-belly-callout">Belly: Breathe Smoothly</text>
+                
+                <rect x="180" y="16" width="138" height="26" rx="6" fill="var(--bg-surface)" stroke="var(--border-color)" />
+                <text x="188" y="33" class="demo-hud-callout" id="hud-pelvic-callout">Pelvis: Gentle Lift</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 3. VIEW MODE C: The Elevator Metaphor Live Visualizer -->
+        <div class="player-elevator-box hidden" id="player-view-elevator">
+          <div class="elevator-shaft">
+            <div class="elevator-floor floor-2">
+              <span class="floor-num">F2</span>
+              <span class="floor-desc">Full Gentle Lift</span>
+            </div>
+            <div class="elevator-floor floor-1">
+              <span class="floor-num">F1</span>
+              <span class="floor-desc">Subtle Awareness Lift</span>
+            </div>
+            <div class="elevator-floor floor-g active">
+              <span class="floor-num">G</span>
+              <span class="floor-desc">100% Full Relaxation Drop</span>
+            </div>
+
+            <!-- Animated Elevator Cab -->
+            <div class="elevator-cab" id="demo-elevator-cab">
+              <span class="cab-icon">✨</span>
+              <span class="cab-label" id="cab-status-label">Ground (Relax)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Guidance & Breath Cue -->
+        <div class="player-guidance-box">
+          <div class="guidance-cue-text" id="player-cue-text">Breathe in gently and relax your belly.</div>
+          <div class="guidance-subcue-text" id="player-subcue-text">Session starting in 3 seconds...</div>
+        </div>
+      </div>
+
+      <!-- Player Controls Footer -->
+      <footer class="player-controls-footer">
+        <button id="btn-player-prev" class="btn-ctrl-secondary" title="Restart Phase">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5"></line></svg>
+        </button>
+
+        <button id="btn-player-pause" class="btn-ctrl-main" title="Pause / Resume">
+          <svg id="ctrl-icon-pause" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+          <svg id="ctrl-icon-play" class="hidden" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        </button>
+
+        <button id="btn-player-skip" class="btn-ctrl-secondary" title="Skip to Next Phase">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
+        </button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- MODAL: SESSION COMPLETED CELEBRATION                    -->
+  <!-- ======================================================= -->
+  <div id="session-complete-modal" class="modal-overlay hidden">
+    <div class="modal-sheet celebration-sheet">
+      <div class="confetti-sparks">✨ 🌟 🌿 💫 ✨</div>
+      <div class="celebration-icon-box">🏆</div>
+      <h2 class="celebration-title">Session Complete!</h2>
+      <p class="celebration-subtitle">Great job staying consistent with your pelvic wellness today.</p>
+
+      <!-- Session Stats Summary -->
+      <div class="complete-stats-row">
+        <div class="stat-bubble">
+          <span class="bubble-val" id="complete-duration-val">2:40</span>
+          <span class="bubble-lbl">Duration</span>
+        </div>
+        <div class="stat-bubble">
+          <span class="bubble-val" id="complete-reps-val">8</span>
+          <span class="bubble-lbl">Reps</span>
+        </div>
+        <div class="stat-bubble">
+          <span class="bubble-val" id="complete-streak-val">4 Days</span>
+          <span class="bubble-lbl">Streak</span>
+        </div>
+      </div>
+
+      <!-- Optional Quick Check-in -->
+      <div class="feedback-group">
+        <label class="feedback-label">How did this session feel?</label>
+        <div class="feedback-btn-row">
+          <button class="btn-mood-chip active" data-mood="comfortable">🌿 Comfortable</button>
+          <button class="btn-mood-chip" data-mood="relaxed">😌 Very Relaxed</button>
+          <button class="btn-mood-chip" data-mood="tired">🧘 Needed Rest</button>
+        </div>
+      </div>
+
+      <!-- New Badge Unlock Alert (if applicable) -->
+      <div id="complete-new-badge-banner" class="new-badge-card hidden">
+        <span class="badge-icon-spark">⭐</span>
+        <div>
+          <strong>New Milestone Unlocked!</strong>
+          <p id="complete-badge-name">3-Day Rhythm</p>
+        </div>
+      </div>
+
+      <button id="btn-complete-done" class="btn-primary btn-full mt-large">
+        Done & Return to Home
+      </button>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- MODAL: ONBOARDING WIZARD                                -->
+  <!-- ======================================================= -->
+  <div id="onboarding-modal" class="modal-overlay hidden">
+    <div class="modal-sheet onboarding-sheet">
+      <!-- Step 1: Welcome -->
+      <div class="onboard-step active" id="onboard-step-1">
+        <div class="onboard-icon-hero">🌱</div>
+        <h2 class="onboard-title">Welcome to Floré</h2>
+        <p class="onboard-desc">A calm, private space to build healthy pelvic floor awareness, gentle tone, and effortless daily consistency.</p>
+        
+        <div class="onboard-feature-list">
+          <div class="onboard-feature-item">
+            <span>✨</span>
+            <p><strong>Gentle Guided Sessions:</strong> Visual breathing and relaxation cues.</p>
+          </div>
+          <div class="onboard-feature-item">
+            <span>🛡️</span>
+            <p><strong>100% Private:</strong> Everything stays strictly on your device.</p>
+          </div>
+          <div class="onboard-feature-item">
+            <span>🌿</span>
+            <p><strong>No Straining:</strong> Focused equally on gentle contraction and full release.</p>
+          </div>
+        </div>
+
+        <button class="btn-primary btn-full mt-large btn-next-step" data-next="2">Get Started →</button>
+      </div>
+
+      <!-- Step 2: Goal Selection -->
+      <div class="onboard-step" id="onboard-step-2">
+        <h2 class="onboard-title">What is your primary wellness goal?</h2>
+        <p class="onboard-desc">We will personalize your recommended starting routine.</p>
+
+        <div class="goal-options-list">
+          <label class="goal-radio-card active">
+            <input type="radio" name="onboard-goal" value="awareness" checked>
+            <div class="goal-card-content">
+              <strong>Improve Pelvic Floor Awareness</strong>
+              <p>Learn how to feel, isolate, and fully relax the muscles.</p>
+            </div>
+          </label>
+          <label class="goal-radio-card">
+            <input type="radio" name="onboard-goal" value="habit">
+            <div class="goal-card-content">
+              <strong>Build a Regular Exercise Habit</strong>
+              <p>Establish a 3-5 minute daily wellness rhythm.</p>
+            </div>
+          </label>
+          <label class="goal-radio-card">
+            <input type="radio" name="onboard-goal" value="bladder">
+            <div class="goal-card-content">
+              <strong>Support Bladder & Core Control</strong>
+              <p>Gentle endurance holds to boost daily confidence.</p>
+            </div>
+          </label>
+          <label class="goal-radio-card">
+            <input type="radio" name="onboard-goal" value="general">
+            <div class="goal-card-content">
+              <strong>General Pelvic Floor Wellness</strong>
+              <p>Maintain balanced muscle tone and flexibility.</p>
+            </div>
+          </label>
+        </div>
+
+        <button class="btn-primary btn-full mt-medium btn-next-step" data-next="3">Continue →</button>
+      </div>
+
+      <!-- Step 3: Experience & Reminder Time -->
+      <div class="onboard-step" id="onboard-step-3">
+        <h2 class="onboard-title">Your Routine Preferences</h2>
+        <p class="onboard-desc">Set your preferred pace and reminder time.</p>
+
+        <div class="onboard-group">
+          <label class="onboard-label">Starting Difficulty Level:</label>
+          <div class="level-choice-grid">
+            <button type="button" class="btn-level-chip active" data-level="beginner">
+              <strong>Beginner</strong>
+              <span>3s Hold • 5s Relax</span>
+            </button>
+            <button type="button" class="btn-level-chip" data-level="intermediate">
+              <strong>Intermediate</strong>
+              <span>5s Hold • 6s Relax</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="onboard-group mt-medium">
+          <label class="onboard-label">Preferred Daily Reminder Time:</label>
+          <input type="time" id="onboard-time-input" class="onboard-time-picker" value="09:00">
+          <p class="onboard-hint">Discreet message: "Your wellness session is ready."</p>
+        </div>
+
+        <button class="btn-primary btn-full mt-large btn-next-step" data-next="4">Almost Done →</button>
+      </div>
+
+      <!-- Step 4: Health Disclaimer & Consent -->
+      <div class="onboard-step" id="onboard-step-4">
+        <div class="onboard-disclaimer-card">
+          <div class="disclaimer-icon">🩺</div>
+          <h3>Wellness & Health Guidance</h3>
+          <p>Floré is designed for educational wellness and healthy habit formation. It is not a substitute for clinical medical advice, diagnosis, or treatment.</p>
+          
+          <ul class="disclaimer-bullet-list">
+            <li>Always practice with gentle, moderate effort (never strain or force).</li>
+            <li>Continue breathing normally throughout every hold.</li>
+            <li>Never practice Kegels while urinating as a regular routine.</li>
+            <li>Stop immediately if you experience sharp pain or discomfort, and consult a qualified healthcare professional.</li>
+          </ul>
+
+          <label class="consent-checkbox-row">
+            <input type="checkbox" id="onboard-disclaimer-agree" checked>
+            <span>I understand and agree that this is a gentle wellness app.</span>
+          </label>
+        </div>
+
+        <button id="btn-finish-onboarding" class="btn-primary btn-full mt-medium">
+          Enter Floré
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- MODAL: CUSTOM ROUTINE BUILDER                           -->
+  <!-- ======================================================= -->
+  <div id="custom-builder-modal" class="modal-overlay hidden">
+    <div class="modal-sheet">
+      <div class="sheet-header">
+        <h2>Create Custom Session</h2>
+        <button class="btn-close-modal" id="btn-close-custom-builder">✕</button>
+      </div>
+      <form id="custom-routine-form">
+        <div class="form-group">
+          <label for="custom-name">Routine Name</label>
+          <input type="text" id="custom-name" class="form-input" placeholder="e.g. My Evening Relaxation" required value="Custom Flow">
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="custom-contract">Contract / Hold (sec)</label>
+            <input type="number" id="custom-contract" class="form-input" min="1" max="12" value="4">
+          </div>
+          <div class="form-group">
+            <label for="custom-relax">Relaxation (sec)</label>
+            <input type="number" id="custom-relax" class="form-input" min="3" max="20" value="6">
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="custom-reps">Reps per Set</label>
+            <input type="number" id="custom-reps" class="form-input" min="3" max="20" value="8">
+          </div>
+          <div class="form-group">
+            <label for="custom-sets">Total Sets</label>
+            <input type="number" id="custom-sets" class="form-input" min="1" max="5" value="2">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="custom-rest">Rest Between Sets (sec)</label>
+          <input type="number" id="custom-rest" class="form-input" min="5" max="60" value="20">
+        </div>
+
+        <div class="custom-summary-preview" id="custom-summary-preview">
+          Estimated Duration: ~3 min 10 sec (16 total reps)
+        </div>
+
+        <div class="sheet-actions mt-medium">
+          <button type="button" class="btn-secondary" id="btn-cancel-custom">Cancel</button>
+          <button type="submit" class="btn-primary">Save & Start Session</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- MODAL: ARTICLE DETAIL READER                            -->
+  <!-- ======================================================= -->
+  <div id="article-modal" class="modal-overlay hidden">
+    <div class="modal-sheet article-sheet">
+      <div class="sheet-header">
+        <span class="article-meta-badge" id="article-modal-category">Technique</span>
+        <button class="btn-close-modal" id="btn-close-article-modal">✕</button>
+      </div>
+      <h2 class="article-modal-title" id="article-modal-title">Article Title</h2>
+      <div class="article-body-content" id="article-modal-body">
+        <!-- Injected via education.js -->
+      </div>
+      <button class="btn-primary btn-full mt-large" id="btn-close-article-bottom">Back to Learn</button>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- MODAL: SELF-CHECK QUIZ                                  -->
+  <!-- ======================================================= -->
+  <div id="quiz-modal" class="modal-overlay hidden">
+    <div class="modal-sheet quiz-sheet">
+      <div class="sheet-header">
+        <h3>Technique Self-Check</h3>
+        <button class="btn-close-modal" id="btn-close-quiz">✕</button>
+      </div>
+      <div id="quiz-content-area">
+        <!-- Injected via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- DISCREET PRIVACY SCREEN SHIELD (CAMOUFLAGE VIEW)        -->
+  <!-- ======================================================= -->
+  <div id="discreet-screen" class="discreet-overlay hidden">
+    <div class="discreet-paper">
+      <div class="discreet-paper-header">
+        <span class="discreet-doc-title">Daily Study Notes & Reading Journal</span>
+        <button id="btn-exit-discreet" class="btn-discreet-unlock" title="Unlock / Return to App">
+          <span>🔒 Exit Shield</span>
+        </button>
+      </div>
+      <div class="discreet-paper-body">
+        <p class="discreet-date">Today • September 22, 2026</p>
+        <h4>Summary Notes</h4>
+        <p>1. Key principles of healthy habit formation: consistent small daily repetitions yield far greater long-term results than sporadic intensive sessions.</p>
+        <p>2. Mindful respiration techniques: maintaining smooth diaphragmatic breathing allows balanced autonomic regulation.</p>
+        <p>3. Review chapter 4 on muscular recovery and hydration.</p>
+        <div class="discreet-checklist">
+          <label><input type="checkbox" checked> Complete morning review</label>
+          <label><input type="checkbox" checked> 20-minute quiet focus interval</label>
+          <label><input type="checkbox"> Evening reflection notes</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- MODAL: VISUAL EXERCISE DEMONSTRATION STUDIO             -->
+  <!-- ======================================================= -->
+  <div id="exercise-demo-modal" class="modal-overlay hidden">
+    <div class="modal-sheet demo-studio-sheet">
+      <div class="sheet-header">
+        <div>
+          <span class="explorer-badge">Visual Movement Guide</span>
+          <h2 class="demo-studio-title">Exercise Demonstrations</h2>
+        </div>
+        <button class="btn-close-modal" id="btn-close-demo-modal">✕</button>
+      </div>
+
+      <!-- Demonstration Mode Navigation Tabs -->
+      <div class="demo-studio-tabs">
+        <button class="btn-demo-tab active" data-tab="supine">🛏️ Lying Down</button>
+        <button class="btn-demo-tab" data-tab="seated">🪑 Seated</button>
+        <button class="btn-demo-tab" data-tab="standing">🚶 Standing</button>
+        <button class="btn-demo-tab" data-tab="elevator">🎚️ Elevator</button>
+        <button class="btn-demo-tab" data-tab="breath">🌬️ Breath Sync</button>
+      </div>
+
+      <!-- Main Animated Demonstration Visual Stage -->
+      <div class="demo-stage-card">
+        <div class="demo-stage-header">
+          <span class="demo-stage-phase-badge" id="studio-phase-badge">Phase: Inhale & 100% Relax</span>
+          <div class="demo-stage-controls-mini">
+            <button class="btn-mini-tool" id="btn-studio-play-pause" title="Play / Pause Animation">⏸️ Pause</button>
+            <button class="btn-mini-tool" id="btn-studio-step" title="Step through phases">⏭️ Next Phase</button>
+          </div>
+        </div>
+
+        <!-- Animated SVG Demonstration Display -->
+        <div class="demo-stage-viewport">
+          <svg id="studio-demo-svg" viewBox="0 0 360 220" width="100%" height="220">
+            <!-- Dynamic demonstration content injected via app.js -->
+          </svg>
+        </div>
+
+        <!-- Interactive Phase Slider -->
+        <div class="demo-slider-wrapper">
+          <div class="demo-slider-labels">
+            <span>🌿 Relax (Baseline)</span>
+            <span>🌊 50% Lift</span>
+            <span>⚡ 100% Gentle Hold</span>
+          </div>
+          <input type="range" id="studio-phase-slider" min="0" max="100" value="0" class="demo-range-slider">
+        </div>
+      </div>
+
+      <!-- Key Movement Technique Checklist -->
+      <div class="demo-technique-guide" id="studio-technique-guide">
+        <!-- Injected via JavaScript based on selected tab -->
+      </div>
+
+      <!-- Direct Action to Start Session with this posture -->
+      <div class="sheet-actions mt-medium">
+        <button id="btn-studio-start-session" class="btn-primary btn-full">
+          ▶ Start Today's Session with this Posture
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/audio.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/programs.js"></script>
+  <script src="js/education.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
