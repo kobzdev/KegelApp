@@ -1,0 +1,19 @@
+{
+  "name": "flore-pelvic-wellness",
+  "version": "1.0.0",
+  "description": "A private, gentle, guided pelvic floor and Kegel wellness mobile web app for adults.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "kegel",
+    "pelvic-floor",
+    "wellness",
+    "health",
+    "exercise"
+  ],
+  "author": "",
+  "license": "MIT"
+}
